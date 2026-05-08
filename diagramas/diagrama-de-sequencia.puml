@@ -1,0 +1,21 @@
+@startuml
+
+actor Usuario
+
+participant View
+participant Controller
+participant Service
+participant Repository
+database "Banco de Dados" as DB
+
+Usuario -> View : Preenche dados do filme
+View -> Controller : Envia requisição
+Controller -> Service : Validar dados
+Service -> Repository : Salvar filme
+Repository -> DB : INSERT filme
+DB --> Repository : Confirmação
+Repository --> Service : Sucesso
+Service --> Controller : Retorno
+Controller --> View : Exibe mensagem
+
+@enduml
